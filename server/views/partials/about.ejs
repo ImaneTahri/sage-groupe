@@ -1,0 +1,48 @@
+<%- include partials/header.ejs %> 
+
+<%- include partials/main_nav.ejs %> 
+
+
+  <main>
+    <div class="jumbotron">
+      <div class="container">
+        <h1 class="display-4"><%= title %></h1>
+      </div>
+    </div>
+
+    <div class="container">
+      
+
+      <div class="card mb-3 w-100" >
+        <div class="row no-gutters">
+          <div class="col-md-4">
+            <img src="/Assets/images/profile.jpeg" class="card-img" alt="...">
+          </div>
+          <div class="col-md-8">
+            <div class="card-body">
+              <h1>Short Bio</h1>
+              <p class="card-text mb-5">Hello I’m Christine Kweri, currently enrolled in Software Engineering program in my 3rd semester at Centennial College. My goal is to become a software developer.
+</p>
+              
+              <h2 class="mb-3">Things I Like:</h2>
+              <ul class="list-group list-group-horizontal">
+                <li class="list-group-item">Dancing</li>
+                <li class="list-group-item">Music</li>
+                <li class="list-group-item">Food</li>
+              </ul>
+
+              <a href="/Assets/cv.pdf" class="btn btn-primary btn-lg mt-3">Link to Resume</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    
+    </div>
+
+    
+
+  </main>
+
+<%- include partials/bottom_nav.ejs %>           
+
+<%- include partials/footer.ejs %>    
