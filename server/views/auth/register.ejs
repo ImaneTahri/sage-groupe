@@ -1,10 +1,10 @@
-<%- include ../partials/header.ejs %>  
-  
-<%- include ../partials/main_nav.ejs %>  
+<%- include ../partials/header.ejs %>
+
+<%- include ../partials/main_nav.ejs %>
 
 <main class="container">
     <!-- Message Area -->
-    <% if(messages.length > 0) { %>
+    <% if(messages.length > 0) {%>
         <div class="alert alert-danger">
             <%= messages %>
         </div>
@@ -27,24 +27,24 @@
                     name="password" placeholder="Enter password"
                     id="password" required>
                 </fieldset>
-                
+
                 <fieldset class="form-group">
                     <label for="email">Email: </label>
                     <input type="email" class="form-control"
-                    name="email" placeholder="Enter email address"
+                    name="email" placeholder="Enter Email Address"
                     id="email" required>
                 </fieldset>
 
                 <fieldset class="form-group">
                     <label for="displayName">Display Name: </label>
                     <input type="text" class="form-control"
-                    name="displayName" placeholder="Enter display name"
+                    name="displayName" placeholder="Enter Display Name"
                     id="displayName" required>
                 </fieldset>
 
                 <fieldset class="form-group text-right">
                     <input type="submit" class="btn btn-success" value="Register">
-                    <a href="/" >
+                    <a href="/">
                         <input type="button" class="btn btn-warning" value="Cancel">
                     </a>
                 </fieldset>
@@ -55,6 +55,9 @@
 
 
 </main>
+
+
+
 
 
 <%- include ../partials/bottom_nav.ejs %>  

@@ -1,33 +1,49 @@
+/*
+Author: Christine Kweri
+Student ID : 300957096
+Date: 10-11-2020
+FileName : app.js
+
+*/
+
 let createError = require('http-errors');
 let express = require('express');
 let path = require('path');
 let cookieParser = require('cookie-parser');
 let logger = require('morgan');
 
-//modules for authentication
+
+// modules for authentication
 let session = require('express-session');
 let passport = require('passport');
+
+//let passportJWT = require('passport-jwt');
+//let JWTStrategy = passportJWT.Strategy;
+//let ExtractJWT = passportJWT.ExtractJwt;
+
 let passportLocal = require('passport-local');
 let localStrategy = passportLocal.Strategy;
 let flash = require('connect-flash');
 
-//database setup 
-let mongoose = require("mongoose");
+//database setup
+
+let mongoose = require('mongoose');
 let DB = require('./db');
 
-//point mongoose to the DB URI
-mongoose.connect(DB.URI, {useNewUrlParser: true, useUnifiedTopology: true});
+//point mongoose
+mongoose.connect(DB.URI, { useNewUrlParser: true , useUnifiedTopology: true });
 
 let mongoDB = mongoose.connection;
-mongoDB.on('error', console.error.bind(console, 'Connection Error:'));	
-  //if there is an, outputs it on console
-mongoDB.once('open', () => {
+mongoDB.on('error', console.error.bind(console,'Connection Error:'));
+mongoDB.once('open', ()=>{
   console.log('Connected to MongoDB...');
 });
 
 let indexRouter = require('../routes/index');
 let usersRouter = require('../routes/users');
-let contactsRouter = require('../routes/contact');
+let booksRouter = require('../routes/book');
+let businessRouter = require('../routes/business');
+
 
 let app = express();
 
@@ -40,7 +56,8 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, '../../public')));
-app.use(express.static(path.join(__dirname, '../../node_modules')));
+app.use(express.static(path.join(__dirname,'../../node_modules')));
+
 
 //setup express session
 app.use(session({
@@ -49,31 +66,36 @@ app.use(session({
   resave: false
 }));
 
-//initialize flash
+// initialize flash
 app.use(flash());
 
-//initialize passport
+// initialize passport
 app.use(passport.initialize());
 app.use(passport.session());
 
-//passport user configuration
+// passport user configuration
 
-//create a User Model Instance
+// create a User Model Instance
 let userModel = require('../models/user');
 let User = userModel.User;
 
-//implement a User Authentication Strategy
+
+// implement a User Authentication Strategy
 passport.use(User.createStrategy());
 
-//seralize and deserialize (i.e. en/decrypt) the User info
+// serialize and deserialize the User info
 passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
 
+
+
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
-app.use('/contact-list', contactsRouter);
+app.use('/book-list',booksRouter);
+app.use('/business-list',businessRouter);
 
-// ch 404 ancatd forward to error handler
+
+// catch 404 and forward to error handler
 app.use(function(req, res, next) {
   next(createError(404));
 });
@@ -86,7 +108,7 @@ app.use(function(err, req, res, next) {
 
   // render the error page
   res.status(err.status || 500);
-  res.render('../views/error', { title: 'Error' });
+  res.render('error', { title: 'Error' });
 });
 
 module.exports = app;

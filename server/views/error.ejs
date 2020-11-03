@@ -1,15 +1,19 @@
-<%- include partials/header.ejs %> 
+<!--
 
-<%- include partials/main_nav.ejs %> 
-  
+FileName : error.ejs
+Author: Christine Kweri
+Student ID : 300957096
+Date: 10-11-2020
+-->
+<%- include partials/header.ejs %>
+<%- include partials/main_nav.ejs %>
 
-  <div class="container mt-5">
-    <h1><%= message %></h1>
-    <h2><%= error.status %></h2>
-    <pre><%= error.stack %></pre>
-  </div>
 
-
-<%- include partials/bottom_nav.ejs %>           
-
-<%- include partials/footer.ejs %>    
+<div class="container">
+<p><i class="fas fa-10x fa-bug"></i></p>
+<h1><%= message %></h1>
+<h2><%= error.status %></h2>
+<pre><%= error.stack %></pre>
+</div>
+<%- include partials/bottom_nav.ejs %>
+<%- include partials/footer.ejs %>
