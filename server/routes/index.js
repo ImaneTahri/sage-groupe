@@ -1,39 +1,20 @@
-let express = require('express');
-let router = express.Router();
-
-let indexController = require('../controllers/index');
+var express = require('express');
+var router = express.Router();
 
 /* GET home page. */
-router.get('/', indexController.displayHomePage);
+router.get('/', function(req, res, next) {
+  res.render('home', { title: 'Welcome survey' });
+});
 
-/* GET home page. */
-router.get('/home', indexController.displayHomePage);
 
-/* GET About Us page. */
-router.get('/about', indexController.displayAboutPage);
+/* GET Surevey page. */
+//router.get('/home', function(req, res, next) {
+//  res.render('survey-list', { title: 'Current Survey List' });
+//});
 
-/* GET Products page. */
-router.get('/products', indexController.displayProductsPage);
-
-/* GET Services page. */
-router.get('/services', indexController.displayServicesPage);
-
-/* GET Contact Us page. */
-router.get('/contact', indexController.displayContactPage);
-
-/* GET Route for displaying the Login page */
-router.get('/login', indexController.displayLoginPage);
-
-/* POST Route for processing the Login page */
-router.post('/login', indexController.processLoginPage);
-
-/* GET Route for displaying the Register page */
-router.get('/register', indexController.displayRegisterPage);
-
-/* POST Route for processing the Register page */
-router.post('/register', indexController.processRegisterPage);
-
-/* GET to perform UserLogout */
-router.get('/logout', indexController.performLogout);
+/* GET Surevey page. */
+//router.get('/survey', function(req, res, next) {
+//  res.render('survey', { title: 'Survey' });
+//});
 
 module.exports = router;

@@ -40,9 +40,7 @@ mongoDB.once('open', ()=>{
 });
 
 let indexRouter = require('../routes/index');
-let usersRouter = require('../routes/users');
-let booksRouter = require('../routes/book');
-let businessRouter = require('../routes/business');
+let surveyRouter = require('../routes/survey');
 
 
 let app = express();
@@ -76,23 +74,21 @@ app.use(passport.session());
 // passport user configuration
 
 // create a User Model Instance
-let userModel = require('../models/user');
-let User = userModel.User;
+let surveyModel = require('../models/survey');
+let Survey = surveyModel.Survey;
 
 
 // implement a User Authentication Strategy
-passport.use(User.createStrategy());
+//passport.use(User.createStrategy());
 
 // serialize and deserialize the User info
-passport.serializeUser(User.serializeUser());
-passport.deserializeUser(User.deserializeUser());
+//passport.serializeUser(User.serializeUser());
+//passport.deserializeUser(User.deserializeUser());
 
 
 
 app.use('/', indexRouter);
-app.use('/users', usersRouter);
-app.use('/book-list',booksRouter);
-app.use('/business-list',businessRouter);
+app.use('/survey-list',surveyRouter);
 
 
 // catch 404 and forward to error handler
