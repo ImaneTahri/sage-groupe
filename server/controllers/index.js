@@ -1,7 +1,6 @@
 /*--
-Author: Christine Kweri
-Student ID : 300957096
-Date: 10-11-2020
+Author: Sage Groupe
+Date: 12-11-2020
 FileName : app.js
 */
 
@@ -12,14 +11,10 @@ let mongoose = require('mongoose');
 let passport = require('passport');
 
 
+
 // enable jwt
 //let jwt = require('jsonwebtoken');
 //let DB = require('../config/db');
-
-
-// create the User Model instance
-let surveyModel = require('../models/survey');
-let Survey = surveyModel.Survey; // alias
 
 
 
